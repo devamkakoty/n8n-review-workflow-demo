@@ -1,0 +1,55 @@
+{
+  "name": "Synthetic review only - pending then replay",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual-demo",
+      "name": "Run synthetic demo",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8787/plan",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "{\"notes\":[{\"noteId\":\"synthetic-n8n-demo-1\",\"text\":\"Synthetic exercise: review a draft checklist; do not send or schedule anything.\",\"modelResult\":{\"status\":\"ok\",\"actions\":[{\"kind\":\"task\",\"title\":\"Review the synthetic checklist\"},{\"kind\":\"email_draft\",\"title\":\"Review an unsent synthetic update\",\"body\":\"This is fixture text, not a message to a real recipient.\"}]}}]}",
+        "options": {}
+      },
+      "id": "plan-first",
+      "name": "Plan fixture - pending review",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [260, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8787/plan",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "{\"notes\":[{\"noteId\":\"synthetic-n8n-demo-1\",\"text\":\"Synthetic exercise: review a draft checklist; do not send or schedule anything.\",\"modelResult\":{\"status\":\"ok\",\"actions\":[{\"kind\":\"task\",\"title\":\"Review the synthetic checklist\"},{\"kind\":\"email_draft\",\"title\":\"Review an unsent synthetic update\",\"body\":\"This is fixture text, not a message to a real recipient.\"}]}}]}",
+        "options": {}
+      },
+      "id": "plan-replay",
+      "name": "Replay fixture - duplicate",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [520, 0]
+    }
+  ],
+  "connections": {
+    "Run synthetic demo": {
+      "main": [[{ "node": "Plan fixture - pending review", "type": "main", "index": 0 }]]
+    },
+    "Plan fixture - pending review": {
+      "main": [[{ "node": "Replay fixture - duplicate", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" }
+}
