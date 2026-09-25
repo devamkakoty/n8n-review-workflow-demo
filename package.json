@@ -6,7 +6,8 @@
   "description": "Review-first n8n notes workflow with a local planning API and duplicate suppression",
   "scripts": {
     "start": "node src/server.mjs",
-    "test": "node --test test/planner.test.mjs test/server.test.mjs"
+    "test": "node --test test/planner.test.mjs test/server.test.mjs",
+    "test:all": "node --test examples/lead-capture/lead-capture.test.mjs test/planner.test.mjs test/server.test.mjs"
   },
   "engines": {
     "node": ">=22"

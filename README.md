@@ -27,6 +27,22 @@ flowchart LR
 - **Inspectable implementation:** ordinary n8n Manual Trigger/HTTP Request
   nodes, a dependency-free Node.js API and automated tests.
 
+## Lead-capture and CRM reliability example
+
+[`examples/lead-capture/`](examples/lead-capture/) adds a separate synthetic
+portfolio example for a multi-source lead workflow. It normalizes
+Meta/web/WhatsApp-like fixture inputs, groups duplicate contacts
+deterministically, produces CRM-ready preview records, and reports
+first-response/SLA metrics. It is inactive, credential-free, makes no network
+requests, and performs no CRM writes.
+
+The example has 13 focused tests. Together with this repository's original
+suite, **33/33 tests pass** on Node.js 22.15.0:
+
+```sh
+npm run test:all
+```
+
 ## Try it
 
 Use Node.js 22 or newer for the local wrapper:
@@ -64,6 +80,10 @@ result with zero proposals on replay.
 See the [actual node outputs](docs/execution-result.json) and
 [verification record](docs/verification.md). This is engine execution evidence,
 not just a test that reads the workflow JSON.
+
+The separate lead-capture example has component and workflow-fixture
+verification, but has not been imported into the n8n engine. Its README states
+that distinction explicitly.
 
 ## Files
 
