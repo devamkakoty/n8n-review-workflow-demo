@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node src/server.mjs",
     "test": "node --test test/planner.test.mjs test/server.test.mjs",
-    "test:all": "node --test examples/lead-capture/lead-capture.test.mjs test/planner.test.mjs test/server.test.mjs"
+    "test:all": "node --test examples/marketing-reporting/marketing-reporting.test.mjs examples/lead-capture/lead-capture.test.mjs test/planner.test.mjs test/server.test.mjs"
   },
   "engines": {
     "node": ">=22"

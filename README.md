@@ -36,12 +36,17 @@ deterministically, produces CRM-ready preview records, and reports
 first-response/SLA metrics. It is inactive, credential-free, makes no network
 requests, and performs no CRM writes.
 
-The example has 13 focused tests. Together with this repository's original
-suite, **33/33 tests pass** on Node.js 22.15.0:
+The lead-capture example has 13 focused tests. Together with the 17
+marketing-reporting tests and this repository's original suite,
+**50/50 tests pass** on Node.js 22.15.0:
 
 ```sh
 npm run test:all
 ```
+
+Also see the [synthetic marketing-reporting example](examples/marketing-reporting/)
+for weekly Meta Ads/GA4 fixtures, replay protection, failure alerts and
+configurable cost estimates.
 
 ## Try it
 
